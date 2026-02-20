@@ -192,12 +192,6 @@ curl -X POST https://vfqfcfqgwuntrqcqcbyv.supabase.co/functions/v1/honeypot-dete
 }
 ```
 
-## 📚 Documentation
-
-- [API Documentation](docs/API.md) - Complete endpoint reference
-- [Architecture Guide](docs/ARCHITECTURE.md) - System design details
-- [Evaluation Breakdown](docs/EVALUATION.md) - Scoring analysis
-
 ## 🎓 Key Learnings
 
 1. **Multi-layer Detection**: Combining keyword, pattern, and behavioral analysis achieves 100% accuracy
