@@ -146,29 +146,6 @@ The system uses a multi-layer detection and engagement pipeline:
 
 See [`supabase/functions/honeypot-detect/index.ts`](supabase/functions/honeypot-detect/index.ts) for the full implementation.
 
-## 📊 Project Structure
-```
-TEAM-MINTSQUARE/
-├── supabase/
-│   └── functions/
-│       └── honeypot-detect/
-│           ├── index.ts           # Main API handler
-│           ├── detector.ts        # Scam detection logic
-│           ├── extractor.ts       # Intelligence extraction
-│           ├── agent.ts           # AI agent (Lovable AI)
-│           ├── session.ts         # Session management
-│           └── callback.ts        # Final callback handler
-├── database/
-│   ├── schema.sql                 # Database schema
-│   └── seed.sql                   # Test data & API keys
-├── docs/
-│   ├── API.md                     # API documentation
-│   ├── ARCHITECTURE.md            # System design
-│   └── EVALUATION.md              # Scoring breakdown
-├── README.md
-└── LICENSE
-```
-
 ## 🔧 Technology Stack
 
 - **Backend**: Supabase Edge Functions (Deno runtime)
