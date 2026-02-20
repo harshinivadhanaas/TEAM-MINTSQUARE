@@ -137,72 +137,14 @@ Content-Type: application/json
 
 ## 🧠 How It Works
 
-### 1. Scam Detection (Multi-layer)
-```typescript
-// Layer 1: Keyword Detection (fast)
-const keywords = ['blocked', 'urgent', 'verify', 'immediately'];
-let score = detectKeywords(message);
+The system uses a multi-layer detection and engagement pipeline:
 
-// Layer 2: Regex Pattern Matching
-const patterns = [/account.*block/i, /send.*₹\d+/i];
-score += matchPatterns(message);
+1. **Scam Detection** — Keyword matching, regex pattern analysis, and behavioral scoring across conversation history
+2. **AI Engagement** — Lovable AI (Google Gemini) generates contextual victim responses based on conversation stage
+3. **Intelligence Extraction** — Regex parsers extract phone numbers, UPI IDs, bank accounts, and URLs from the full conversation
+4. **Final Callback** — Intelligence is reported to the evaluation platform with engagement metrics
 
-// Layer 3: Behavioral Analysis
-if (conversationHistory.length > 0) {
-  score += analyzeBehavior(conversationHistory);
-}
-
-// Decision
-const isScam = score >= 60;
-```
-
-### 2. AI Response Generation
-```typescript
-// Call Lovable AI (Google Gemini)
-const response = await fetch('https://ai.gateway.lovable.dev/chat', {
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${Deno.env.get('LOVABLE_API_KEY')}`,
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    messages: [{
-      role: 'user',
-      content: buildPrompt(conversation, stage)
-    }]
-  })
-});
-```
-
-### 3. Intelligence Extraction
-```typescript
-const intelligence = {
-  phoneNumbers: extractPhones(fullText),      // +91-9876543210
-  bankAccounts: extractBankAccounts(fullText), // 1234567890123
-  upiIds: extractUPIs(fullText),              // scammer@paytm
-  phishingLinks: extractURLs(fullText)        // http://fake.com
-};
-```
-
-### 4. Final Callback
-```typescript
-// Send to evaluation platform
-await fetch('https://hackathon.guvi.in/api/updateHoneyPotFinalResult', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    sessionId,
-    scamDetected: true,
-    totalMessagesExchanged: conversation.length,
-    extractedIntelligence: intelligence,
-    engagementMetrics: {
-      engagementDurationSeconds: duration,
-      totalMessages: conversation.length
-    },
-    agentNotes: generateNotes(intelligence)
-  })
-});
-```
+See [`supabase/functions/honeypot-detect/index.ts`](supabase/functions/honeypot-detect/index.ts) for the full implementation.
 
 ## 📊 Project Structure
 ```
