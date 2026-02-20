@@ -169,27 +169,6 @@ TEAM-MINTSQUARE/
 └── LICENSE
 ```
 
-## 📊 Evaluation Results
-
-**GUVI-HCL AI Hackathon 2025 - Problem Statement 2**
-
-| Category | Score | Status |
-|----------|-------|--------|
-| Scam Detection | 20/20 | ✅ Perfect |
-| Intelligence Extraction | 40/40 | ✅ Perfect |
-| Engagement Quality | 20/20 | ✅ Perfect |
-| Response Structure | 20/20 | ✅ Perfect |
-| Code Quality | 10/10 | ✅ Perfect |
-| **Total** | **100/100** | 🎯 **Perfect Score** |
-
-### Performance Metrics
-
-- **Response Time**: 1.8s average
-- **Detection Accuracy**: 100% (20/20 test cases)
-- **Intelligence Points**: 8.2 average per conversation
-- **Conversation Depth**: 12.4 messages average
-- **Callback Success**: 100%
-
 ## 🔧 Technology Stack
 
 - **Backend**: Supabase Edge Functions (Deno runtime)
